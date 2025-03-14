@@ -1,0 +1,46 @@
+﻿  用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.41.34123 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  cl /c /D BOF /GS- /Fo"intermediary\BOF\x64\\" /external:W1 /Gd /TC /FC /c /Fo"intermediary\BOF\x64\source" Source.c
+cl : 命令行 warning D9025: 正在重写“/Fointermediary\BOF\x64\”(用“/Fointermediary\BOF\x64\source”)
+  Source.c
+C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Source.c(19,9): warning C4005: “stdin”: 宏重定义
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_wstdio.h(36,9):
+      参见“stdin”的前一个定义
+  
+C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Source.c(20,9): warning C4005: “stdout”: 宏重定义
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_wstdio.h(37,9):
+      参见“stdout”的前一个定义
+  
+C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Source.c(21,9): warning C4005: “stderr”: 宏重定义
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_wstdio.h(38,9):
+      参见“stderr”的前一个定义
+  
+C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Source.c(154,40): warning C4047: “==”:“__unaligned DWORD”与“void *”的间接级别不同
+C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Source.c(154,76): warning C4047: “==”:“__unaligned DWORD”与“void *”的间接级别不同
+C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Source.c(179,33): warning C4047: “==”:“ULONGLONG”与“void *”的间接级别不同
+C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Source.c(259,34): warning C4047: “==”:“__unaligned DWORD”与“void *”的间接级别不同
+C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Source.c(358,3): warning C4047: “return”:“int”与“void *”的间接级别不同
+C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Source.c(366,60): warning C4022: “KERNEL32$VirtualAlloc”: 指针与实参 1 不匹配
+C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Source.c(378,38): warning C4047: “=”:“ULONGLONG”与“BYTE *”的间接级别不同
+C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Source.c(394,14): warning C4047: “函数”:“ULONG_PTR”与“BYTE *”的间接级别不同
+C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Source.c(394,14): warning C4024: “FixIAT”: 形参和实参 1 的类型不同
+C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Source.c(423,14): warning C4047: “=”:“DWORD”与“DWORD (__cdecl *)(HANDLE,DWORD)”的间接级别不同
+C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Source.c(503,28): warning C4022: “MSVCRT$memcpy”: 指针与实参 1 不匹配
+  复制了 0 个文件
+  找不到文件 - source.obj
+  . : 无法将“C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Inline-Run-PE-BOF\resources\strip_bof.ps1”项识别为 cmdlet、函
+  数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。
+  所在位置 行:1 字符: 7
+  + & { . 'C:\Users\fuckmiansha\Desktop\Inline-Run-PE-BOF\Inline-Run-PE-B ...
+  +       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      + CategoryInfo          : ObjectNotFound: (C:\Users\fuckmi...s\strip_bof.ps1:String) [], CommandNotFoundException
+      + FullyQualifiedErrorId : CommandNotFoundException
+   
+  strip-bof : 无法将“strip-bof”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径
+  正确，然后再试一次。
+  所在位置 行:1 字符: 99
+  + ... -PE-BOF\Inline-Run-PE-BOF\resources\strip_bof.ps1'; strip-bof -Path ' ...
+  +                                                         ~~~~~~~~~
+      + CategoryInfo          : ObjectNotFound: (strip-bof:String) [], CommandNotFoundException
+      + FullyQualifiedErrorId : CommandNotFoundException
+   
